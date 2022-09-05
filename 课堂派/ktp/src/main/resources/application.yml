@@ -1,0 +1,31 @@
+server:
+  port: 8083
+  tomcat:
+    uri-encoding: utf-8
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/ktp?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+servlet:
+  multipart:
+    enabled: true # 开启文件上传
+    file-size-threshold: 2KB # 文件写入磁盘的阈值
+    max-file-size: 100MB
+    max-request-size: 215MB # 最大请求值大小
+    # 自定义文件保存路径
+gorit:
+  file:
+    root:
+      path: E:\课堂派\ktp\src\main\resources\static\
+
+
+mybatis-plus:
+  configuration:
+    # 下划线——驼峰
+    mapUnderscoreToCamelCase: true
+
+
+

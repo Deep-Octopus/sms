@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.ktp.mapper.HomeworkMapper">
+    <insert id="insert" parameterType="com.example.ktp.bean.entity.Homework">
+        insert into homework(lesson_code, title, type, homework_description, application_link, chapter, start_time,
+                             end_time, all_score, delivery, duplicates)
+        values (#{lessonCode}, #{title}, #{type}, #{homeworkDescription}, #{applicationLink}, #{chapter}, #{startTime},
+                #{endTime}, #{allScore}, #{delivery}, #{duplicates})
+    </insert>
+
+    <select id="getHomeworkList" parameterType="hashmap" resultType="com.example.ktp.bean.entity.Homework">
+        select a.*,b.corrected,b.not_corrected,b.unsubmitted
+        from homework a,homework_status b
+        where a.lesson_code = #{lessonCode} and a.hid = b.hid
+    </select>
+
+    <select id="getMaxHId" resultType="int">
+        select max(hid)
+        from homework
+    </select>
+
+    <insert id="addSubmitHomework" parameterType="hashmap">
+        insert into homework_stu(hid, student_username, homework_file_name)
+        values (#{hid}, #{studentUsername}, #{homeworkName})
+    </insert>
+
+
+    <insert id="setHomeworkStatus">
+        insert into homework_status(lesson_code, hid, unsubmitted)
+        values (#{lessonCode}, #{hid}, #{numOfStu})
+    </insert>
+
+    <update id="updateSubmit" parameterType="int">
+        update homework_status
+        set not_corrected = not_corrected + 1,
+            unsubmitted=unsubmitted - 1
+        where hid = #{hid}
+    </update>
+
+    <select id="queryStu" resultType="com.example.ktp.bean.pojo.UserHomework">
+        select *
+        from homework_stu
+        where hid = #{hid}
+          and student_username = #{username}
+    </select>
+
+    <select id="getHomeworks" resultType="com.example.ktp.bean.pojo.TablePojo">
+        select distinct b.hid,
+                        a.name,
+                        a.stu_id,
+                        b.submit_time,
+                        b.score,
+                        b.homework_file_name,
+                        c.username
+        from student a,
+             homework_stu b,
+             user_lesson c
+        where c.username = b.student_username
+          and a.username = b.student_username
+          and b.hid = #{hid}
+    </select>
+
+    <update id="updateScore" parameterType="com.example.ktp.bean.pojo.UserHomework">
+        update homework_stu
+        set score = #{score}
+        where hid = #{hid}
+          and student_username = #{username}
+    </update>
+
+    <update id="updateCorrect" parameterType="com.example.ktp.bean.pojo.UserHomework">
+        update homework_status
+        set corrected     = corrected + 1,
+            not_corrected = not_corrected - 1
+        where hid = #{hid}
+    </update>
+
+    <select id="queryScore" parameterType="com.example.ktp.bean.pojo.UserHomework" resultType="string">
+        select score
+        from homework_stu
+        where hid = #{hid}
+          and student_username = #{username}
+    </select>
+</mapper>
