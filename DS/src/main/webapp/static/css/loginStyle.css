@@ -1,0 +1,405 @@
+/* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+@font-face {
+    font-family: 'iconfont';  /* Project id 3549170 */
+    src: url('//at.alicdn.com/t/c/font_3549170_zwt2hxovkxn.woff2?t=1659805179570') format('woff2'),
+    url('//at.alicdn.com/t/c/font_3549170_zwt2hxovkxn.woff?t=1659805179570') format('woff'),
+    url('//at.alicdn.com/t/c/font_3549170_zwt2hxovkxn.ttf?t=1659805179570') format('truetype');
+}
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 20px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    /*background-image: linear-gradient(#1FA2FF,#12D8FA,#A6FFCB);*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: 50% 100%;*/
+    /*position:relative;*/
+}
+/*_____________________________________________________________*/
+.outbox{
+    perspective:1000px;		/* 脱离平面屏幕束缚，元素离观察者眼睛的距离, 只能用在3d动画 */
+    -webkit-perspective:1000px;
+}
+.inner{
+    transform-style: preserve-3d;	/* 动画方式 3d */
+    -webkit-transform-style: preserve-3d;
+    transition: 1.5s ease-in-out;  /* 运动速度，变速运动 */
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 400px;
+    width: 600px;
+}
+/*.inner:hover{*/
+/*    -webkit-transform: rotateY(0.5turn);	!*  y轴 旋转180度 半圈 *!*/
+/*    transform: rotateY(0.5turn);*/
+/*}*/
+.front,.back{
+    backface-visibility:hidden; /* 隐藏背部元素 */
+    -webkit-backface-visibility:hidden;
+
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.back{
+    transform:rotateY(180deg); /* 旋转到背部 */
+    margin: -30% 50%;
+}
+
+
+/*________________________________________________*/
+.background{
+    position: fixed;
+    /*background-attachment:fixed;*/
+    /*属性设置背景图像是否固定或者随着页面的其余部分滚动，当设置为fixed时页面的其余部分滚动时，背景图像不会移动。*/
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+
+    background-image: linear-gradient(135deg, rgba(31, 162, 255, 0.8), rgba(18, 216, 250, 0.8),#A5FFD6,#A6FFCB);
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    /*-webkit-background-size: cover;!* 兼容Webkit内核浏览器如Chrome和Safari *!*/
+    /*背景拉伸填充*/
+    /*height: 100%;*/
+    width: 100%;
+
+    z-index: -1;
+
+}
+
+/*source{*/
+/*    min-width: 100%;*/
+/*    min-height: 100%;*/
+/*    height: auto;*/
+/*    width: auto;*/
+/*}*/
+.all_box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    width: 600px;
+    height: 400px;
+
+    background-image:linear-gradient(-45deg,#1FA2FF,#12D8FA,#A6FFCB);
+
+    border-radius: 15px;
+    filter: drop-shadow(
+    1px 3px 9px hsl(220deg 60% 50%)
+    );
+    /*box-shadow:5px 5px 10px 5px darkgray ;*/
+    /*transition-duration: 0.8s;*/
+}
+.login_box{
+
+    width: 400px;
+
+
+    height: 100%;
+    float: left;
+
+}
+#password::after{
+    content: attr(eye);
+}
+.container {
+    height: 30px;
+    width: 50%;
+
+    border: none;
+
+    border-radius: 5px;
+    outline: none;
+
+/ / 除去点击时的黑色边框
+}
+.register_box{
+    float: left;
+    /*js动态更改*/
+    width: 200px;
+    display: none;
+
+    /*overflow: hidden;*/
+    height: 100%;
+    /*z-index: -1;*/
+    /*display: none;*/
+}
+
+/*.register:hover{*/
+/*    text-decoration: black;*/
+/*    transform: scale3d(1,1,1);*/
+/*}*/
+
+/*.register:hover ::after{*/
+/*    content: "";*/
+/*    color: black;*/
+/*    display: block;*/
+/*    -webkit-transition-duration: 0.6s; !* Safari *!*/
+/*    transition-duration: 0.6s;*/
+
+/*    transform-origin: right;*/
+/* }*/
+/*login_box:active {*/
+/*    height: 300px;*/
+/*    transform: rotateX(180deg);*/
+/*    -webkit-transform: rotateX(180deg); !* Safari 与 Chrome *!*/
+/*}*/
+.forgotPassword {
+    text-decoration: none;
+    color: rgba(0, 0, 255, 0.8);
+}
+.login_box input[type=text]{
+    margin-bottom: 30px;
+}
+
+.login_box input[type=password]{
+    margin-bottom: 30px;
+}
+/*input:focus{*/
+/*    border: aqua solid 3px;*/
+/*    display: inline-block;*/
+/*}*/
+
+input[type=password] {
+    padding-left: 10px;
+    margin: 10px 0 5px 0;
+
+}
+
+input[type=text] {
+    padding-left: 10px;
+    margin: 5px 0 10px 0;
+}
+
+input[type=email] {
+    padding-left: 10px;
+    margin: 10px 0 10px 0;
+}
+
+.btOfLogin {
+    display: inline-block;
+    margin: 15px 0 10px 0;
+    width: 50%;
+    height: 40px;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 仿宋, serif;
+    padding: 5px 5px;
+    /*设置hover效果速度*/
+    -webkit-transition-duration: 0.6s; /* Safari */
+    transition-duration: 0.6s;
+}
+
+.btOfLogin:hover,.btOfCover_Register:hover{
+    font-size: 22px;
+    background-color: darkorange;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.cover{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%,-50%);
+
+
+    /*margin-left: -33%;*/
+    /*margin-top: -15%;*/
+    width: 200px;
+    height: 400px;
+    background-color: #28B5FC;
+    border-radius: 15px;
+    filter: drop-shadow(
+            1px 2px 4px hsl(220deg 60% 50%)
+    );
+
+}
+.btOfCover_Register{
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    margin-top: 180px;
+    border-radius: 20px;
+    border: none;
+
+    color: #000000;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 仿宋, serif;
+
+    /*设置hover效果速度*/
+    -webkit-transition-duration: 0.6s; /* Safari */
+    transition-duration: 0.6s;
+
+}
+
+
+#password::after{
+    content: attr(eye);
+    position: absolute;
+    font-size: 20px;
+    border: black solid;
+    width: 30px;
+    height: 30px;
+}
+/*点击移动*/
+
+/*.newCover{*/
+
+/*    position: absolute;*/
+/*    top: 45%;*/
+/*    left: 30%;*/
+/*    margin-top: -150px;*/
+/*    !*移动后*!*/
+/*    margin-left: -130px;*/
+/*    !*margin-left: -33%;*!*/
+/*    !*margin-top: -15%;*!*/
+/*    width: 400px;*/
+/*    height: 360px;*/
+/*    background-color:#75D3FF;*/
+/*    border-radius: 15px;*/
+/*    box-shadow:5px 5px 10px 5px ;*/
+
+/*}*/
+/*.coverMove{*/
+/*    animation:move 5s;*/
+/*    -webkit-animation:move 5s;*/
+/*}*/
+
+@keyframes moveLeft {
+    0%{
+        transform: translate(50%,-50%);
+    }
+    /*50%{*/
+    /*    margin-left: 70px;*/
+    /*    width: 300px;*/
+    /*}*/
+    100%{
+        transform: translate(-150%,-50%);
+    }
+}
+
+@-webkit-keyframes moveLeft {
+    from{
+        transform: translate(50%,-50%);
+    }
+    to{
+        transform: translate(-150%,-50%);
+    }
+}
+@keyframes moveRight {
+    from{transform: translate(-150%,-50%);}
+    to{transform: translate(50%,-50%);}
+}
+
+@-webkit-keyframes moveRight {
+    from{transform: translate(-150%,-50%);}
+    to{transform: translate(50%,-50%);}
+}
+
+@keyframes shrink {
+ from{
+        width: 400px;
+    }
+    to{
+        width: 200px;
+    }
+
+}
+
+
+@keyframes enlarge {
+    from{
+        width: 200px;
+    }
+    to{
+        width: 400px;
+    }
+}
+
+
+.change_pwd input[type = text],.change_pwd input[type=email]{
+    width: 250px;
+    height: 30px;
+    border-radius: 15px;
+    border: white;
+    outline: none;
+
+}
+
+.change_pwd input[type=button]{
+    height: 40px;
+    width: 210px;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: white;
+    outline: none;
+}
+.change_pwd input[type=button]:hover{
+    font-size: 18px;
+    background-color: darkorange;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+
+}
+.verification_code{
+    width: 250px;
+    margin-top: 5px;
+    margin-left: 210px;
+}
+.verification_code input{
+    margin-left: -90px;
+    height: 30px;
+    margin-top: 10px;
+    outline: none;
+}
+.verification_code img{
+    border-radius: 5px;
+    height: 40px;
+    width: 80px;
+    margin-bottom: -13px ;
+    margin-left: 50px;
+}
+
+.change_pwd{
+    z-index: -1;
+}
+
+@keyframes out {
+    from{
+        z-index: -1;
+
+    }
+    to{
+        z-index: 2;
+
+    }
+}
+@keyframes in {
+    from{
+        z-index: 2;
+        opacity: 1;
+    }
+    to{
+        z-index: -1;
+        opacity: 0;
+    }
+}

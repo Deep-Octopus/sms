@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../css/frontPage.css" type="text/css" rel="stylesheet">
+    <title>Student Management System</title>
+    <!--    　<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>-->
+</head>
+<!--<body onload="check(1)">-->
+<body>
+<div>
+    <div class="contain">
+        <form class="add_box" id="add_box" name="add_box">
+            <input type="text" id="id" placeholder="学号">
+            <input type="text" id="name" placeholder="姓名">
+            <div id="checkBox">
+                <label class="iconfont" id="man_img"><input type="radio" name="gender" value="男" onchange="getGender()"
+                                                            id="man">&#xe68d;</label>
+                <label class="iconfont" id="woman_img"><input type="radio" name="gender" value="女"
+                                                              onchange="getGender()" id="woman">&#xe68b;</label>
+            </div>
+            <input type="text" id="telephoneNumber" placeholder="电话号码">
+            <select id="specialize">
+                <option value="">专业</option>
+                <option value="车辆工程">车辆工程</option>
+                <option value="软件工程">软件工程</option>
+                <option value="人工智能">人工智能</option>
+                <option value="大数据">大数据</option>
+                <option value="智能科学与技术">智能科学与技术</option>
+                <option value="电子信息">电子信息</option>
+                <option value="应用数学">应用数学</option>
+            </select>
+            <div class="bt_bottom">
+                <input type="reset" value="重置" id="reset" style="background-color: rgba(255,0,0,0.8)">
+                <input type="button" value="确定" id="ok" style="background-color: rgba(0,128,0,0.7)">
+
+            </div>
+            <a href="#" id="exit_add">退出</a>
+        </form>
+        <div>
+            <div class="bt_top_area" id="bt_top_area">
+                <div class="iconfont" id="log_out" style="color: rgba(255,0,0,0.8)">&#xe659;</div>
+
+                <div class="iconfont" id="batch_delete">&#xe629;</div>
+                <!--                <input  type="button" value="批量删除">-->
+
+                <div class="iconfont" id="add">&#xe600;</div>
+                <!--                <input  type="button" value="增加">-->
+                <div class="iconfont" id="bt_exit" style="display: none">&#xe601;</div>
+                <div>
+                    <label class="switch">
+                        <input type="checkbox" id="isAccurate">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <span id="magnifier" class="iconfont">&#xe62e;</span>
+                <input id="search" type="text" value="">
+                <div class="circle_select iconfont" center="&#xe610;" id="circle_select">
+                    <ul>
+                        <li><a class="iconfont">&#xe7b2;</a></li>
+                        <li><a class="iconfont">&#xe607;</a></li>
+                        <li><a class="iconfont">&#xe673;</a></li>
+                        <li><a class="iconfont">&#xe62a;</a></li>
+                        <li><a class="iconfont">&#xe6a1;</a></li>
+                    </ul>
+                </div>
+            </div>
+            <table id="table">
+                <tr>
+                    <th><input type="checkbox" id="select_all" style="transform: translateX(13px)"></th>
+                    <th>学号</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>电话号码</th>
+                    <th>专业</th>
+                    <th>操作</th>
+                </tr>
+            </table>
+            <!--            翻页-->
+            <div class="page_turn">
+                <span id="page_up" class="iconfont">&#xe632;</span>
+                <input id="page" type="text" value="1">
+                <span id="page_down" class="iconfont">&#xe641;</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="mask" id="mask"></div>
+    <div class="quire" id="quire">
+        <div class="iconfont" id="exit_quire">&#xe61b;</div>
+        <div class="picture">
+            <p class="iconfont">&#xe65a;</p>
+        </div>
+        <div class="name" style="margin-bottom: 5px">
+            <span>姓 名：</span>
+            <p name="" ename=""></p>
+        </div>
+        <div class="id">
+            <span>学 号：</span>
+            <p eid=""></p>
+        </div>
+        <div class="gender">
+            <span>性 别：</span>
+            <p gender=""></p>
+        </div>
+        <div class="telephoneNumber">
+            <span>电 话：</span>
+            <p telephoneNumber=""></p>
+        </div>
+        <div class="specialize">
+            <span>专 业：</span>
+            <p specialize=""></p>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script src="../js/frontPage.js" type="text/javascript"></script>
+<script src="../js/log.js" type="text/javascript"></script>
+
+</body>
+
+</html>
